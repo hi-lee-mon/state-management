@@ -1,5 +1,3 @@
-//TODO: slateなど固定で利用する色を定義しておきたい。
-
 export default function Home() {
   const TODOS = [
     { id: 1, text: 'foo', isDone: false },
