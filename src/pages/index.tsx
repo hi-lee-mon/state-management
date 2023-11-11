@@ -1,22 +1,9 @@
-import { Dispatch, SetStateAction } from 'react';
-import { Todo } from '@/types';
 import { NextPage } from 'next';
-type Props = {
-  todos: Todo[];
-  setTodos: Dispatch<SetStateAction<Todo[]>>;
-};
+import { useTodosContext, useTodosDispatchContext } from '@/context/todosContext';
 
-const Home: NextPage<Props> = ({ todos, setTodos }) => {
-  const toggleIsDone = (id: number) => {
-    setTodos((prevTodos) => {
-      return prevTodos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, isDone: !todo.isDone };
-        }
-        return todo;
-      });
-    });
-  };
+const Home: NextPage = () => {
+  const todos = useTodosContext();
+  const { toggleIsDone } = useTodosDispatchContext();
 
   return (
     <div>

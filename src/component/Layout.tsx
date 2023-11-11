@@ -3,14 +3,13 @@ import { Header } from './Header';
 
 type Props = {
   children: ReactNode;
-  todoCount: number;
 };
 
-export const Layout: FC<Props> = ({ children, todoCount }) => {
+export const Layout: FC<Props> = ({ children }) => {
   return (
     <>
-      <Header todoCount={todoCount} />
-      <main className="container mx-auto py-10">{children}</main>
+      <Header />
+      <main className="container mx-auto px-4 py-10">{children}</main>
     </>
   );
 };

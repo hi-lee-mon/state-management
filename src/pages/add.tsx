@@ -1,25 +1,19 @@
 import React, { ComponentProps } from 'react';
-import { Dispatch, SetStateAction } from 'react';
 import { Todo } from '@/types';
 import { NextPage } from 'next';
-type Props = {
-  setTodos: Dispatch<SetStateAction<Todo[]>>;
-};
+import { useTodosDispatchContext } from '@/context/todosContext';
 
-const Add: NextPage<Props> = ({ setTodos }) => {
+const Add: NextPage = () => {
+  const { addTodo } = useTodosDispatchContext();
+
   const handleAddTodoSubmit: ComponentProps<'form'>['onSubmit'] = (e) => {
     e.preventDefault();
     const text = e.currentTarget.text.value;
-    setTodos((prevTodos) => {
-      const newTodo: Todo = {
-        id: prevTodos.length + 1,
-        text,
-        isDone: false,
-      };
-      return [...prevTodos, newTodo];
-    });
+    addTodo(text);
     e.currentTarget.reset();
   };
+
+  console.info('contextを分けているので追加操作だけでは再レンダリングは発生しない');
 
   return (
     <div>
