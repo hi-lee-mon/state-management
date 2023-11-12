@@ -5,6 +5,8 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Todo } from '@/types';
 import { Layout } from '@/component/Layout';
+import { Provider } from 'react-redux';
+import { store } from '@/state/store';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -40,9 +42,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div className={inter.className}>
-      <Layout todoCount={todos.length}>
-        <Component {...pageProps} todos={todos} setTodos={setTodos} />
-      </Layout>
+      <Provider store={store}>
+        <Layout todoCount={todos.length}>
+          <Component {...pageProps} todos={todos} setTodos={setTodos} />
+        </Layout>
+      </Provider>
     </div>
   );
 }
