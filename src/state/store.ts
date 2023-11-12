@@ -6,3 +6,5 @@ export const store = legacy_createStore(
     todos: todosReducer,
   })
 );
+
+export type RootState = ReturnType<typeof store.getState>;
