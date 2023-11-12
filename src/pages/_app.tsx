@@ -6,6 +6,15 @@ import { TodosProvider } from '@/context/todosContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
+/**
+ * 【useContextの課題】
+ * ・パフォーマンスチューニングを自前でやる必要がある
+ * ・シンプルにContextファイルのコード量が多い
+ * ・複数の状態があるときに管理が大変。またProviderが増えてネストが多くなることでコードが読みづらくなったり、context間での連携もネストで行っていくので難しい
+ * ・SSRと相性が悪い
+ * ※これらの課題を解決するのが外部の状態管理ライブラリ
+ * ※XStateとReduxは難しい
+ */
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={inter.className}>
