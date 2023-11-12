@@ -7,6 +7,8 @@ const TOGGLE_TODO = 'TOGGLE_TODO';
 
 // action creator
 export const addTodo = (text: Todo['text']) => {
+  // actionを返す
+
   return {
     type: ADD_TODO,
     payload: { text },

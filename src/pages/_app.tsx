@@ -34,6 +34,16 @@ const inter = Inter({ subsets: ['latin'] });
  * 4. フレキシブル
  *   エコシステムがあるので便利
  */
+/**
+ * 【Reduxの処理の流れ】
+ * 1. ユーザのアクション
+ * 2. dispatchがactionクリエイターが作成したactionを受け取り運ぶ
+ * 3. middlewareがactionを受け取り、actionをそのままreducerに渡すか、actionを変更してreducerに渡すかを決める（api通信などを挟むことができる）
+ * 4. actionがreducerに渡り、reducerが新しい状態を作成してstoreを更新
+ * 5. selectorがstoreから状態を取得してviewに渡す(selectorは利用する状態を選択できるのでパフォーマンスチューニングにも使える)
+ * 6. viewが更新される
+ *
+ */
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={inter.className}>
