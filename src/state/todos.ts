@@ -4,7 +4,7 @@ import { Reducer } from 'redux';
 const ADD_TODO = 'ADD_TODO';
 
 // action creator
-const addTodo = (text: Todo['text']) => {
+export const addTodo = (text: Todo['text']) => {
   return {
     type: ADD_TODO, // action type
     payload: { text }, // action payload
