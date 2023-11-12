@@ -22,7 +22,7 @@ const Home: NextPage<Props> = () => {
             <label className=" flex items-center gap-2 text-xl">
               <input
                 type="checkbox"
-                onChange={() => dispatch(toggleTodo(todo.id))}
+                onChange={() => dispatch(toggleTodo({ id: todo.id }))}
                 checked={todo.isDone}
                 className="w-5 h-5"
               />

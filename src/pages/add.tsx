@@ -13,8 +13,8 @@ const Add: NextPage<Props> = () => {
 
   const handleAddTodoSubmit: ComponentProps<'form'>['onSubmit'] = (e) => {
     e.preventDefault();
-    const text = e.currentTarget.text.value;
-    dispatch(addTodo(text));
+    const text: string = e.currentTarget.text.value;
+    dispatch(addTodo({ text }));
     e.currentTarget.reset();
   };
 
