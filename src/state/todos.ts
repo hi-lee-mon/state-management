@@ -1,17 +1,26 @@
 import { Todo } from '@/types';
 import { Reducer } from 'redux';
 
+// action type
 const ADD_TODO = 'ADD_TODO';
+const TOGGLE_TODO = 'TOGGLE_TODO';
 
 // action creator
 export const addTodo = (text: Todo['text']) => {
   return {
-    type: ADD_TODO, // action type
-    payload: { text }, // action payload
+    type: ADD_TODO,
+    payload: { text },
   } as const;
 };
 
-type Action = ReturnType<typeof addTodo>;
+export const toggleTodo = (id: Todo['id']) => {
+  return {
+    type: TOGGLE_TODO,
+    payload: { id },
+  } as const;
+};
+
+type Action = ReturnType<typeof addTodo | typeof toggleTodo>;
 
 /**
  * 【Reducerのポイント】
@@ -25,9 +34,19 @@ type Action = ReturnType<typeof addTodo>;
  */
 export const todosReducer: Reducer<Todo[], Action> = (state = [], action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case ADD_TODO: {
       const newTodo = { id: state.length, text: action.payload.text, isDone: false };
       return [...state, newTodo];
+    }
+    case TOGGLE_TODO: {
+      return state.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, isDone: !todo.isDone };
+        } else {
+          return todo;
+        }
+      });
+    }
     default: {
       return state;
     }

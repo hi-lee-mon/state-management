@@ -1,22 +1,17 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Todo } from '@/types';
 import { NextPage } from 'next';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/state/store';
+import { toggleTodo } from '@/state/todos';
 type Props = {
   todos: Todo[];
   setTodos: Dispatch<SetStateAction<Todo[]>>;
 };
 
-const Home: NextPage<Props> = ({ todos, setTodos }) => {
-  const toggleIsDone = (id: number) => {
-    setTodos((prevTodos) => {
-      return prevTodos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, isDone: !todo.isDone };
-        }
-        return todo;
-      });
-    });
-  };
+const Home: NextPage<Props> = () => {
+  const todos = useSelector((state: RootState) => state.todos);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -27,7 +22,7 @@ const Home: NextPage<Props> = ({ todos, setTodos }) => {
             <label className=" flex items-center gap-2 text-xl">
               <input
                 type="checkbox"
-                onChange={() => toggleIsDone(todo.id)}
+                onChange={() => dispatch(toggleTodo(todo.id))}
                 checked={todo.isDone}
                 className="w-5 h-5"
               />
