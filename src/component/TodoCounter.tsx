@@ -1,4 +1,4 @@
-import { useStore } from '@/state/todo';
+import { useStore } from '@/state/store';
 import { FC } from 'react';
 
 export const TodoCounter: FC = () => {

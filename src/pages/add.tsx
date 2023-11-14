@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import { Todo } from '@/types';
 import { NextPage } from 'next';
-import { useStore } from '@/state/todo';
+import { useStore } from '@/state/store';
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
 };
