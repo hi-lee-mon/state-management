@@ -2,22 +2,17 @@ import React, { ComponentProps } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import { Todo } from '@/types';
 import { NextPage } from 'next';
+import { useStore } from '@/state/todo';
 type Props = {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
 };
 
-const Add: NextPage<Props> = ({ setTodos }) => {
+const Add: NextPage<Props> = () => {
+  const addTodo = useStore((state) => state.addTodo);
   const handleAddTodoSubmit: ComponentProps<'form'>['onSubmit'] = (e) => {
     e.preventDefault();
     const text = e.currentTarget.text.value;
-    setTodos((prevTodos) => {
-      const newTodo: Todo = {
-        id: prevTodos.length + 1,
-        text,
-        isDone: false,
-      };
-      return [...prevTodos, newTodo];
-    });
+    addTodo(text);
     e.currentTarget.reset();
   };
 

@@ -8,13 +8,21 @@ import { Layout } from '@/component/Layout';
 
 const inter = Inter({ subsets: ['latin'] });
 
+/**
+ * 【Zustandの特徴】
+ * ・flux
+ * ・Reduxよりもシンプル
+ * ・contextよりも記述量が少ない
+ * ・contextよりもレンダリングを抑えられる
+ * ・hooksを使う
+ * ・providerを使わない
+ * ・レンダリングを抑えくれる
+ */
 export default function App({ Component, pageProps }: AppProps) {
-  const [todos, setTodos] = useState<Todo[]>([{ id: 1, text: 'hoge', isDone: true }]);
-
   return (
     <div className={inter.className}>
-      <Layout todoCount={todos.length}>
-        <Component {...pageProps} todos={todos} setTodos={setTodos} />
+      <Layout>
+        <Component {...pageProps} />
       </Layout>
     </div>
   );

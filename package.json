@@ -12,7 +12,8 @@
     "next": "14.0.1",
     "prettier": "^3.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -26,11 +27,11 @@
     "typescript": "^5"
   },
   "prettier": {
-		"printWidth": 100,
-		"trailingComma": "es5",
-		"tabWidth": 2,
-		"semi": true,
-		"singleQuote": true,
-		"endOfLine": "lf"
+    "printWidth": 100,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "endOfLine": "lf"
   }
 }
